@@ -65,7 +65,7 @@
 
   {{- /* Footer */ -}}
   <div class="post-footer">
-    <a href="{{ .RelPermalink }}">{{ T "single.readMore" }}</a>
+    <a href="{{ .RelPermalink }}" class="read-more">{{ T "single.readMore" }}</a>
     {{- with .Params.tags -}}
       <div class="post-tags">
         {{- dict "Class" "fa-solid fa-tags fa-fw me-1" | partial "plugin/icon.html" -}}
