@@ -37,7 +37,7 @@
             {{- end -}}
           {{- end -}}
         {{- end -}}
-        <span>{{- .Title -}}</span>
+        <span>{{- .Title -}} {{- cond .Draft " [Draft]" "" -}}</span>
       </h1>
 
       {{- /* Subtitle */ -}}
