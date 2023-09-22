@@ -21,7 +21,8 @@ noscript = ""
 
 # === Taxonomy ===
 [allSome]
-other = "Tutti {{ .Some }}"
+one = "{{ .Some }}: {{ .Count }} elemento"
+other = "{{ .Some }}: {{ .Count }} elementi"
 
 [category]
 other = "Categoria"
@@ -30,13 +31,13 @@ other = "Categoria"
 other = "Categorie"
 
 [tag]
-other = "Etichetta"
+other = "Tag"
 
 [tags]
-other = "Etichette"
+other = "Tag"
 
 [posts]
-other = "Articoli"
+other = "Post"
 
 [taxonomy.totalwordCount]
 one = ""
@@ -101,17 +102,17 @@ other = "Condividi su"
 [single]
 contents= "Contenuti"
 repost= ""
-publishedOnDate= "pubblicato su {{ .Date }}"
-includedInCategories= "incluso in {{ .Categories }}"
-views = "visualizzazioni"
-comments = "commenti"
+publishedOnDate= "Pubblicato il {{ .Date }}"
+includedInCategories= "Incluso in {{ .Categories }}"
+views = "Visualizzazioni"
+comments = "Commenti"
 author = "Autore"
 updatedOnDate = "Aggiornato il {{ .Date }}"
 readMarkdown = "Leggi Markdown"
 editThisPage = "Modifica questa pagina"
 back = "Indietro"
 home = "Home"
-readMore = "Leggi di più"
+readMore = "Leggi di più..."
 expirationReminder = "Questo articolo è stato aggiornato l'ultima volta il {{ .Date }}, il contenuto potrebbe non essere aggiornato."
 encryptedAbstract = ""
 encryptedMessage = ""

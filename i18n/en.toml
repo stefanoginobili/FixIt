@@ -19,7 +19,8 @@ noscript = "Theme FixIt works best with JavaScript enabled."
 
 # === Taxonomy ===
 [allSome]
-other = "All {{ .Some }}"
+one = "{{ .Some }}: {{ .Count }} item"
+other = "{{ .Some }}: {{ .Count }} items"
 
 [category]
 other = "Category"
@@ -108,7 +109,7 @@ readMarkdown = "Read Markdown"
 editThisPage = "Edit this page"
 back = "Back"
 home = "Home"
-readMore = "Read More"
+readMore = "Read More..."
 expirationReminder = "This article was last updated on {{ .Date }}, the content may be out of date."
 encryptedAbstract = "This article has been encrypted, so its raw content is invisible!"
 encryptedMessage = "Please enter the password"
