@@ -1,3 +1,18 @@
+Forked from https://github.com/hugo-fixit/FixIt to adapt to custom needs.
+
+- Add "[Draft]" marker to posts having `{ draft: true }`
+- New params and their implementation
+  - `section.hideWordCount`
+  - `section.summary.enable`
+  - `page.hideAuthor`
+  - `page.hidePostInfoLine`
+  - `page.hidePublishDate`
+  - `page.hideLastModDate`
+  - `page.hideBackLink`
+- Change some tranlsation
+
+---
+
 # FixIt Theme | Hugo
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hugo-fixit/FixIt?style=flat)](https://github.com/hugo-fixit/FixIt/releases)
