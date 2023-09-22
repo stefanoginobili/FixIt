@@ -47,7 +47,9 @@
     {{- /* Meta */ -}}
     <div class="post-meta">
       <div class="post-meta-line">
-        {{- partial "single/post-author.html" . -}}
+        {{- if not $params.hideAuthor -}}
+          {{- partial "single/post-author.html" . -}}
+        {{- end -}}
 
         {{- $categories := slice -}}
         {{- range .Params.categories -}}
@@ -61,17 +63,21 @@
         {{- end -}}
       </div>
       <div class="post-meta-line">
-        {{- with .PublishDate | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
-          <span title="{{ dict "Date" ("2006-01-02 15:04:05" | $.PublishDate.Format) | T "single.publishedOnDate" }}">
-            {{- dict "Class" "fa-regular fa-calendar-alt fa-fw me-1" | partial "plugin/icon.html" -}}
-            {{- printf `<time datetime="%v">%v</time>` . . | safeHTML -}}
-          </span>&nbsp;
-        {{- end -}}
-        {{- with .Lastmod | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
-          <span title="{{ dict "Date" ("2006-01-02 15:04:05" | $.Lastmod.Format) | T "single.updatedOnDate" }}">
-            {{- dict "Class" "fa-regular fa-edit fa-fw me-1" | partial "plugin/icon.html" -}}
-            {{- printf `<time datetime="%v">%v</time>` . . | safeHTML -}}
-          </span>&nbsp;
+        {{- if not $params.hidePublishDate -}}
+          {{- with .PublishDate | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
+            <span title="{{ dict "Date" ("2006-01-02 15:04:05" | $.PublishDate.Format) | T "single.publishedOnDate" }}">
+              {{- dict "Class" "fa-regular fa-calendar-alt fa-fw me-1" | partial "plugin/icon.html" -}}
+              {{- printf `<time datetime="%v">%v</time>` . . | safeHTML -}}
+            </span>&nbsp;
+          {{- end -}}
+          {{- end -}}
+        {{- if not $params.hideLastModDate -}}
+          {{- with .Lastmod | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
+            <span title="{{ dict "Date" ("2006-01-02 15:04:05" | $.Lastmod.Format) | T "single.updatedOnDate" }}">
+              {{- dict "Class" "fa-regular fa-edit fa-fw me-1" | partial "plugin/icon.html" -}}
+              {{- printf `<time datetime="%v">%v</time>` . . | safeHTML -}}
+            </span>&nbsp;
+          {{- end -}}
         {{- end -}}
         {{- if $params.wordCount -}}
           <span>

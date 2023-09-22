@@ -3,28 +3,30 @@
 
 <div class="post-footer" id="post-footer">
   <div class="post-info">
-    <div class="post-info-line">
-      <div class="post-info-mod">
-        <span title="{{ dict "Date" ("2006-01-02 15:04:05" | .Lastmod.Format) | T "single.updatedOnDate" }}">
-          {{- with .Lastmod | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
-            {{- dict "Date" . | T "single.updatedOnDate" -}}&nbsp;
-            {{- if $gitRepo -}}
-              {{- with $.GitInfo -}}
-                <a class="git-hash" href="{{ printf `%v/commit/%v` $gitRepo .Hash }}" rel="external nofollow noopener noreferrer" target="_blank" title="commit by {{ .AuthorName }}({{ .AuthorEmail }}) {{ .Hash }}: {{ .Subject }}">
-                  {{- dict "Class" "fa-solid fa-hashtag fa-fw" | partial "plugin/icon.html" -}}
-                  {{- .AbbreviatedHash -}}
-                </a>
+    {{- if not $params.hidePostInfoLine -}}
+      <div class="post-info-line">
+        <div class="post-info-mod">
+          <span title="{{ dict "Date" ("2006-01-02 15:04:05" | .Lastmod.Format) | T "single.updatedOnDate" }}">
+            {{- with .Lastmod | dateFormat (.Site.Params.dateformat | default "2006-01-02") -}}
+              {{- dict "Date" . | T "single.updatedOnDate" -}}&nbsp;
+              {{- if $gitRepo -}}
+                {{- with $.GitInfo -}}
+                  <a class="git-hash" href="{{ printf `%v/commit/%v` $gitRepo .Hash }}" rel="external nofollow noopener noreferrer" target="_blank" title="commit by {{ .AuthorName }}({{ .AuthorEmail }}) {{ .Hash }}: {{ .Subject }}">
+                    {{- dict "Class" "fa-solid fa-hashtag fa-fw" | partial "plugin/icon.html" -}}
+                    {{- .AbbreviatedHash -}}
+                  </a>
+                {{- end -}}
               {{- end -}}
             {{- end -}}
-          {{- end -}}
-        </span>
-      </div>
-      {{- with $params.license | string -}}
-        <div class="post-info-license{{ with $params.password }} d-none{{ end }}">
-          <span>{{- . | safeHTML -}} </span>
+          </span>
         </div>
-      {{- end -}}
-    </div>
+        {{- with $params.license | string -}}
+          <div class="post-info-license{{ with $params.password }} d-none{{ end }}">
+            <span>{{- . | safeHTML -}} </span>
+          </div>
+        {{- end -}}
+      </div>
+    {{- end -}}
     <div class="post-info-line{{ with $params.password }} d-none{{ end }}">
       <div class="post-info-md">
         {{- if $params.linktomarkdown -}}
@@ -68,9 +70,11 @@
         {{- end -}}
       {{- end -}}
     </section>
-    <section>
-      <span><a href="javascript:void(0);" onclick="window.history.back();">{{ T "single.back" }}</a></span>&nbsp;|&nbsp;<span><a href="{{ .Site.Home.RelPermalink }}">{{ T "single.home" }}</a></span>
-    </section>
+    {{- if not $params.hideBackLink -}}
+      <section>
+        <span><a href="javascript:void(0);" onclick="window.history.back();">{{ T "single.back" }}</a></span>&nbsp;|&nbsp;<span><a href="{{ .Site.Home.RelPermalink }}">{{ T "single.home" }}</a></span>
+      </section>
+    {{- end -}}
   </div>
 
   <div class="post-nav">

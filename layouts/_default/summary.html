@@ -32,7 +32,9 @@
 
   {{- /* Meta */ -}}
   <div class="post-meta">
-    {{- partial "single/post-author.html" . -}}
+    {{- if not $params.hideAuthor -}}
+      {{- partial "single/post-author.html" . -}}
+    {{- end -}}
 
     {{- with .PublishDate | dateFormat (.Site.Params.dateFormat | default "2006-01-02") -}}
       &nbsp;<span class="post-publish" title='{{ "2006-01-02 15:04:05" | $.PublishDate.Format }}'>
