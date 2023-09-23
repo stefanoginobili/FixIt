@@ -21,8 +21,8 @@ noscript = ""
 
 # === Taxonomy ===
 [allSome]
-one = "{{ .Some }}: {{ .Count }} elemento"
-other = "{{ .Some }}: {{ .Count }} elementi"
+one = "{{ .Some }} - {{ .Count }} elemento"
+other = "{{ .Some }} - {{ .Count }} elementi"
 
 [category]
 other = "Categoria"
